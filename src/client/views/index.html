@@ -4,35 +4,35 @@
 <head>
   <meta charset="utf-8">
   <title>News NLP by Mark Guerrero</title>
-  <link rel="stylesheet" href="/styles/resets.css">
-  <link rel="stylesheet" href="/styles/base.css">
-  <link rel="stylesheet" href="/styles/header.css">
-  <link rel="stylesheet" href="/styles/form.css">
-  <link rel="stylesheet" href="/styles/footer.css">
 </head>
 
 <body>
   <header>
-    <h1>News NLP by Mark Guerrero</h1>
+    <h1>Meaning Cloud Sentiment Analysis, a Udacity Project by Mark Guerrero</h1>
   </header>
   <main>
     <section>
-      <form class="" onsubmit="return handleSubmit(event)">
-        <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-        <input type="submit" name="" value="submit" onclick="return handleSubmit(event)"
-          onsubmit="return handleSubmit(event)">
+      <form onsubmit="handleSubmit(event)">
+        <input id="sentimentText" type="text" name="input" value="" placeholder="Enter Sentiment Text" />
+        <input id="btnSubmit" type="button" name="btnSubmit" value="SUBMIT" />
       </form>
     </section>
     <section>
-      <strong class="errorMessage">Error Message:</strong>
-      <strong>Form Results:</strong>
-      <div id="results">
-      </div>
+      <strong>Results:</strong>
+      <ul class="results">
+        <li><label>Model: <span class="model"></span></label></li>
+        <li><label>Score Tag: <span class="scoreTag"></span></label></li>
+        <li><label>Agreement: <span class="agreement"></span></label></li>
+        <li><label>Subjectivity: <span class="subjectivity"></span></label></li>
+        <li><label>Confidence: <span class="confidence"></span></label></li>
+        <li><label>Irony: <span class="irony"></span></label></li>
+      </ul>
     </section>
   </main>
   <footer>
-    <p>This is a footer</p>
+    <p>&copy;2021 Meaning Cloud Sentiment Analysis by Mark Guerrero</p>
   </footer>
+  <script src="main.js"></script>
   <script>
     // Check that service workers are supported
     if ('serviceWorker' in navigator) {

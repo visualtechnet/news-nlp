@@ -17,7 +17,11 @@ module.exports = {
         {
             test: /\.scss$/,
             use: [ 'style-loader', 'css-loader', 'sass-loader' ]
-        }
+        },
+        {
+          test: /\.css$/i,
+          use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        },
       ]
     },
     plugins: [
@@ -26,6 +30,5 @@ module.exports = {
           filename: "./index.html",
       }),
       new WorkboxPlugin.GenerateSW(),
-      new MiniCssExtractPlugin({filename: '[name].css'})
     ]
 }

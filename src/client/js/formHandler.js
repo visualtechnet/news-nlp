@@ -1,17 +1,27 @@
-const nlpUrl = 'https://news-nlp-server.herokuapp.com/';
+const nlpUrl = 'https://news-nlp-server.herokuapp.com';
+//const nlpUrl = 'http://localhost:8090'
+import { checkForName } from './nameChecker'
 
-function handleSubmit(event) {
-    event.preventDefault()
-
-    // check what text was put into the form field
-    let formText = document.getElementById('name').value
+function handleSubmit () {
+    let formText = document.getElementById('sentimentText').value
     checkForName(formText)
 
-    console.log("::: Form Submitted :::")
-    fetch(`${nlpUrl}/test`)
+
+    fetch(`${nlpUrl}/sentiment`, {
+        method: "POST",
+        "Content-Type": "application/json;utf-8",
+        body: JSON.stringify({ message: formText })
+    })
     .then(res => res.json())
     .then(function(res) {
-        document.getElementById('results').innerHTML = res.message
+        const { model, score_tag, agreement, subjectivity, confidence, irony } = res
+        document.querySelector('.model').innerHTML = model;
+        document.querySelector('.scoreTag').innerHTML = score_tag;
+        document.querySelector('.agreement').innerHTML = agreement;
+        document.querySelector('.subjectivity').innerHTML = subjectivity;
+        document.querySelector('.confidence').innerHTML = confidence;
+        document.querySelector('.irony').innerHTML = irony;
+
     })
 }
 

@@ -5,23 +5,32 @@ const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
 const apiKey = process.env.API_KEY
 const port = process.env.PORT
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const helmet = require('helmet')
+const sentUrl = 'https://api.meaningcloud.com/sentiment-2.1'
+const fetch = require('node-fetch');
 
 const app = express()
 
 app.use(express.static('dist'))
-
-console.log(__dirname)
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cors())
+app.use(helmet())
 
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    //res.sendFile(path.resolve('src/client/views/index.html'))
-    res.send('Hello World')
+    res.sendFile('dist/index.html')
 })
 
-app.get('/test', function (req, res) {
-    res.send('Hello World')
+app.post('/sentiment', async function (req, res) {
+    const { message } = req.body
+    const finalSentimentUrl = `${sentUrl}?key=${apiKey}&of=json&txt=${message}&lang=en`;
+    const result = await fetch(finalSentimentUrl).then(res => res.json())
+
+    res.status(200).send(result);
 })
-// designates what port the app will listen to for incoming requests
+
 app.listen(port, function () {
-    console.log('Example app listening on port 8080!')
+    console.log(`App listening on port ${port}!`)
 })
