@@ -28,3 +28,9 @@ input {
 .results li:nth-child(even) {
     background-color: ghostwhite;
 }
+
+.errorMessage {
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+}

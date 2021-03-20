@@ -12,9 +12,11 @@
   </header>
   <main>
     <section>
-      <form onsubmit="handleSubmit(event)">
+      <form onsubmit="handleSubmit()">
         <input id="sentimentText" type="text" name="input" value="" placeholder="Enter Sentiment Text" />
-        <input id="btnSubmit" type="button" name="btnSubmit" value="SUBMIT" />
+        <input id="btnSubmit" type="submit" name="btnSubmit" value="ANALYZE SENTIMENT" />
+        <div class="errorMessage hide">
+        </div>
       </form>
     </section>
     <section>
