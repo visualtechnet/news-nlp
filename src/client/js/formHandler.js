@@ -1,3 +1,5 @@
+const nlpUrl = 'https://news-nlp-server.herokuapp.com/';
+
 function handleSubmit(event) {
     event.preventDefault()
 
@@ -6,7 +8,7 @@ function handleSubmit(event) {
     checkForName(formText)
 
     console.log("::: Form Submitted :::")
-    fetch('http://localhost:8080/test')
+    fetch(`${nlpUrl}/test`)
     .then(res => res.json())
     .then(function(res) {
         document.getElementById('results').innerHTML = res.message

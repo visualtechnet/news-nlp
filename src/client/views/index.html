@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Test</title>
+  <title>News NLP by Mark Guerrero</title>
   <link rel="stylesheet" href="/styles/resets.css">
   <link rel="stylesheet" href="/styles/base.css">
   <link rel="stylesheet" href="/styles/header.css">
@@ -13,8 +13,7 @@
 
 <body>
   <header>
-    <div class=""> Logo </div>
-    <div class=""> navigation </div>
+    <h1>News NLP by Mark Guerrero</h1>
   </header>
   <main>
     <section>
@@ -25,13 +24,24 @@
       </form>
     </section>
     <section>
+      <strong class="errorMessage">Error Message:</strong>
       <strong>Form Results:</strong>
-      <div id="results"></div>
+      <div id="results">
+      </div>
     </section>
   </main>
   <footer>
     <p>This is a footer</p>
   </footer>
+  <script>
+    // Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
+    }
+  </script>
 </body>
 
 </html>
